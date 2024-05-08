@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO: Implementation of onPressed functions and other things
 class TouraAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TouraAppBar({super.key});
 

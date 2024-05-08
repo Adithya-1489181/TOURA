@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO: Implementation of onPressed functions and other things
 class TouraNavigationBar extends StatelessWidget {
   const TouraNavigationBar({super.key});
 
