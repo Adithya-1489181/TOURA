@@ -33,7 +33,7 @@ class TouraHomePage extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          reverse: true,
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               const SizedBox(
@@ -49,7 +49,7 @@ class TouraHomePage extends StatelessWidget {
                     ),
                     icon: const Icon(
                       Icons.circle,
-                      size: 50,
+                      size: 60,
                     ),
                     onPressed: () {},
                   ),
@@ -61,7 +61,7 @@ class TouraHomePage extends StatelessWidget {
                     onPressed: () {},
                     icon: const Icon(
                       Icons.circle,
-                      size: 50,
+                      size: 60,
                     ),
                   )
                 ],
@@ -90,7 +90,7 @@ class TouraHomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 100,
+                height: 70,
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -129,7 +129,7 @@ class TouraHomePage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      height: 7,
+                      height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -167,7 +167,7 @@ class TouraHomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 60,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
