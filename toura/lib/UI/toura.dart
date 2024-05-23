@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toura/UI/home_page.dart';
+import 'package:toura/UI/map_page.dart';
 import 'package:toura/UI/todo_page.dart';
 
 enum CurrentPage { homePage, mapPage, todoPage }
@@ -15,7 +16,7 @@ class _TouraState extends State<Toura> {
   CurrentPage _currentPage = CurrentPage.homePage;
   final _page = <Widget>[
     const HomePage(),
-    const Placeholder(),
+    const MapPage(),
     const TodoPage(),
   ];
 
