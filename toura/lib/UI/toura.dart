@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toura/UI/home_page_body.dart';
+import 'package:toura/UI/home_page.dart';
+import 'package:toura/UI/map_page.dart';
+import 'package:toura/UI/todo_page.dart';
 
 enum CurrentPage { homePage, mapPage, todoPage }
 
@@ -12,24 +14,14 @@ class Toura extends StatefulWidget {
 
 class _TouraState extends State<Toura> {
   CurrentPage _currentPage = CurrentPage.homePage;
-  Widget _page = const Placeholder();
+  final _page = <Widget>[
+    const HomePage(),
+    const MapPage(),
+    const TodoPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    switch (_currentPage) {
-      case CurrentPage.homePage:
-        _page = const HomePageBody();
-        break;
-      case CurrentPage.mapPage:
-        _page = const Placeholder();
-        break;
-      case CurrentPage.todoPage:
-        _page = const Placeholder();
-        break;
-      default:
-        _page = const Placeholder();
-    }
-
     return MaterialApp(
       title: "Toura",
       theme: ThemeData(
@@ -51,7 +43,7 @@ class _TouraState extends State<Toura> {
             });
           },
         ),
-        body: _page,
+        body: _page[_currentPage.index],
       ),
     );
   }

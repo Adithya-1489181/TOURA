@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class HomePageBody extends StatelessWidget {
-  const HomePageBody({
+class HomePage extends StatelessWidget {
+  const HomePage({
     super.key,
   });
 
@@ -152,10 +152,7 @@ class HomePageBody extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  prefixIcon: IconButton(
-                    icon: const Icon(Icons.message),
-                    onPressed: () {},
-                  ),
+                  prefixIcon: const Icon(Icons.message),
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.send),
                     onPressed: () {},
