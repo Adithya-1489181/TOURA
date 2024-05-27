@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                     Icons.circle,
                     size: 60,
                   ),
-                )
+                ),
               ],
             ),
             const SizedBox(
