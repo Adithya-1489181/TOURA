@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 // TODO: Have to look at the url_launcher more
 // TODO: Look at and use the location package
+// TODO: flutter_map + grasshoppper for direction it works fine for trial (https://www.reddit.com/r/FlutterDev/comments/1b7v3kj/flutter_maps_and_navigation_for_free/)
 class MapPage extends StatelessWidget {
   const MapPage({super.key});
 
