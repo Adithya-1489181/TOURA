@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toura/UI/trip_plan.dart';
 
 class TodoPage extends StatelessWidget {
   const TodoPage({super.key});
@@ -6,18 +7,29 @@ class TodoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ListView.builder(
+      child: ListView.separated(
         physics: const BouncingScrollPhysics(),
+        itemCount: 10,
         itemBuilder: (context, index) {
-          return Card(
-            margin: const EdgeInsets.symmetric(vertical: 5),
-            color: Colors.amber,
-            child: Padding(
-              padding: const EdgeInsets.all(40),
-              child: Center(
-                child: Text("Toura tour name $index"),
-              ),
+          return Padding(
+            padding: const EdgeInsets.all(2),
+            child: ListTile(
+              title: Center(child: Text("Toura tour name ${index + 1}")),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        TripPlan("Toura tour name ${index + 1}"),
+                  ),
+                );
+              },
             ),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const Divider(
+            color: Colors.grey,
           );
         },
       ),
