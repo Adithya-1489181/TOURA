@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:toura/UI/chat_page.dart';
 import 'package:toura/UI/home_page.dart';
 import 'package:toura/UI/map_page.dart';
 import 'package:toura/UI/todo_page.dart';
 
-enum CurrentPage { homePage, mapPage, todoPage }
+enum CurrentPage { homePage, chatpage, mapPage, todoPage }
 
 class Toura extends StatefulWidget {
   const Toura({super.key});
@@ -16,6 +17,7 @@ class _TouraState extends State<Toura> {
   CurrentPage _currentPage = CurrentPage.homePage;
   final _page = <Widget>[
     const HomePage(),
+    const ChatPage(),
     const MapPage(),
     const TodoPage(),
   ];
@@ -34,6 +36,8 @@ class _TouraState extends State<Toura> {
           selectedIndex: _currentPage.index,
           destinations: const [
             NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+            NavigationDestination(
+                icon: Icon(Icons.chat_rounded), label: "ChatBot"),
             NavigationDestination(icon: Icon(Icons.map), label: "Map"),
             NavigationDestination(icon: Icon(Icons.list), label: "Todo"),
           ],
