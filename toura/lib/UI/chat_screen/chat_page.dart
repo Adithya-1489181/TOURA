@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:toura/UI/toura_chat_box.dart';
+import 'package:toura/UI/chat_screen/chat_box.dart';
 
 class Message {
   String content;

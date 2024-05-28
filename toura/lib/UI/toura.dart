@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:toura/UI/chat_page.dart';
-import 'package:toura/UI/home_page.dart';
-import 'package:toura/UI/map_page.dart';
-import 'package:toura/UI/todo_page.dart';
+import 'package:toura/UI/chat_screen/chat_page.dart';
+import 'package:toura/UI/home_screen/home_page.dart';
+import 'package:toura/UI/map_screen/map_page.dart';
+import 'package:toura/UI/todo_screen/todo_page.dart';
 
 enum CurrentPage { homePage, chatpage, mapPage, todoPage }
 
