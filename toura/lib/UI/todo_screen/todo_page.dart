@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toura/UI/trip_plan.dart';
+import 'package:toura/UI/todo_screen/trip_plan.dart';
 
 class TodoPage extends StatelessWidget {
   const TodoPage({super.key});

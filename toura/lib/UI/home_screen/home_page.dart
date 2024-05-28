@@ -147,17 +147,8 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  prefixIcon: const Icon(Icons.message),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.send),
-                    onPressed: () {},
-                  ),
-                ),
+              child: const Center(
+                child: Text("Don't know what to do"),
               ),
             ),
           ],
