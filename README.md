@@ -1,5 +1,2 @@
-# TOURA
-TOURISTS!! We are upto help you
-
-## What are we going to do here
-Basically we are gonna build a helpful app for tourists that gives the order of places to visit and also a Melo-journey of the trip planned
+# Toura
+TOURISTS! We are here to help you with our AI trip planning app which will give you all the information you need for your next trip to be fun and enjoyable!
