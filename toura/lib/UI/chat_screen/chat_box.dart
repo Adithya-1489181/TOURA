@@ -34,6 +34,7 @@ class ChatBox extends StatelessWidget {
             child: MarkdownBody(
               data: message,
               selectable: true,
+              softLineBreak: true,
             ),
           ),
         ),
