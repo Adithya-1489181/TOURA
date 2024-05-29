@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:toura/UI/chat_screen/chat_page.dart';
+import 'package:toura/Provider/messagenotifier.dart';
 
 class InputBox extends ConsumerStatefulWidget {
   const InputBox({super.key});
@@ -31,8 +31,7 @@ class _InputBoxState extends ConsumerState<InputBox> {
               icon: const Icon(Icons.send),
               onPressed: () {
                 if (_controller.text.trim().isNotEmpty) {
-                  ref.read(msgNotifierProvider.notifier).add(
-                      Message(content: _controller.text, isFromUser: true));
+                  ref.read(msgNotifierProvider.notifier).add(_controller.text);
                   _controller.clear();
                 }
               },
