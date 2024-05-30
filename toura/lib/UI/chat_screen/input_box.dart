@@ -20,7 +20,8 @@ class _InputBoxState extends ConsumerState<InputBox> {
         constraints: const BoxConstraints(maxHeight: 200),
         child: TextField(
           keyboardType: TextInputType.multiline,
-          maxLines: null,
+          minLines: 1,
+          maxLines: 5,
           controller: _controller,
           decoration: InputDecoration(
             border: OutlineInputBorder(
@@ -30,19 +31,11 @@ class _InputBoxState extends ConsumerState<InputBox> {
             suffixIcon: IconButton(
               icon: const Icon(Icons.send),
               onPressed: () async {
-                if (_controller.text.trim().isNotEmpty) {
+                if (_controller.text.trim().isNotEmpty &&
+                    !ref.read(msgNotifierProvider.notifier).isAITyping) {
                   String prompt = _controller.text;
                   _controller.clear();
-                  if (!await ref
-                      .read(msgNotifierProvider.notifier)
-                      .add(prompt)) {
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text(
-                            "Something went wrong. Please try again shortly"),
-                      ));
-                    }
-                  }
+                  ref.read(msgNotifierProvider.notifier).userPrompt(prompt);
                 }
               },
             ),

@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:toura/api_key.dart';
@@ -14,21 +14,18 @@ class GenAi {
     _chat = _model.startChat();
   }
 
-  Future<String?> getAnswer(String text, String? path) async {
-    late final GenerateContentResponse response;
-    if (path != null) {
-      final firstImage = await (File(path).readAsBytes());
+  Stream<GenerateContentResponse> getAnswer(String text, Uint8List? image) {
+    if (image != null) {
       final prompt = TextPart(text);
       final imageParts = [
-        DataPart('image/jpeg', firstImage),
+        DataPart('image/jpeg', image),
       ];
-      response = await _visionModel.generateContent([
+      return _visionModel.generateContentStream([
         Content.multi([prompt, ...imageParts])
       ]);
     } else {
       var content = Content.text(text.toString());
-      response = await _chat.sendMessage(content);
+      return _chat.sendMessageStream(content);
     }
-    return response.text;
   }
 }
