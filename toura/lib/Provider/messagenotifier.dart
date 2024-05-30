@@ -10,6 +10,7 @@ class Message {
 
 class MsgNotifier extends Notifier<List<Message>> {
   late GenAi genai;
+  bool isTyping = false;
 
   MsgNotifier() {
     genai = GenAi();
@@ -34,8 +35,10 @@ Incididunt commodo consequat ex ipsum occaecat laborum veniam in labore ad. Quis
   }
 
   Future<bool> add(String input) async {
+    isTyping = true;
     state = [...state, Message(content: input, isFromUser: true)];
     String? response = await genai.getAnswer(input, null);
+    isTyping = false;
     if (response == null) {
       return false;
     } else {

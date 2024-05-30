@@ -29,10 +29,20 @@ class _InputBoxState extends ConsumerState<InputBox> {
             prefixIcon: const Icon(Icons.message),
             suffixIcon: IconButton(
               icon: const Icon(Icons.send),
-              onPressed: () {
+              onPressed: () async {
                 if (_controller.text.trim().isNotEmpty) {
-                  ref.read(msgNotifierProvider.notifier).add(_controller.text);
+                  String prompt = _controller.text;
                   _controller.clear();
+                  if (!await ref
+                      .read(msgNotifierProvider.notifier)
+                      .add(prompt)) {
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            "Something went wrong. Please try again shortly"),
+                      ));
+                    }
+                  }
                 }
               },
             ),

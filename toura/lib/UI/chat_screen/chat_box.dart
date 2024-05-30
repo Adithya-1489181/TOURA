@@ -39,7 +39,7 @@ class ChatBox extends StatelessWidget {
                     data: message,
                     selectable: false,
                     softLineBreak: true,
-                    onSelectionChanged: (text, selection, cause) {},
+                    // onSelectionChanged: (text, selection, cause) {},
                     // onTapLink: (text, href, title) {
                     //   print("Text is $text, link is $href, title is $title");
                     // },
