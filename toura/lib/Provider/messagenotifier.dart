@@ -27,6 +27,7 @@ class MsgNotifier extends Notifier<List<Message>> {
     String? response = await genai.getAnswer(input, null);
     isTyping = false;
     if (response == null) {
+      state = [...state];
       return false;
     } else {
       state = [...state, Message(content: response, isFromUser: false)];
