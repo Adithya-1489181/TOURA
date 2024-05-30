@@ -32,6 +32,12 @@ class _ChatPageState extends ConsumerState<ChatPage> {
               },
             ),
           ),
+          if (ref.read(msgNotifierProvider.notifier).isTyping)
+            const Padding(
+              padding: EdgeInsets.only(left: 16, top: 4),
+              child: Align(
+                  alignment: Alignment.centerLeft, child: Text("Typing...")),
+            ),
           const InputBox(),
         ],
       ),
