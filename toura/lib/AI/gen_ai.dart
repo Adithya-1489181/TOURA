@@ -17,7 +17,7 @@ class GenAi {
   Future<String?> getAnswer(String text, String? path) async {
     late final GenerateContentResponse response;
     if (path != null) {
-      final firstImage = await (File(path!).readAsBytes());
+      final firstImage = await (File(path).readAsBytes());
       final prompt = TextPart(text);
       final imageParts = [
         DataPart('image/jpeg', firstImage),

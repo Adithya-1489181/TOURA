@@ -31,11 +31,22 @@ class ChatBox extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
             margin: const EdgeInsets.only(bottom: 8.0),
-            child: MarkdownBody(
-              data: message,
-              selectable: true,
-              softLineBreak: true,
-            ),
+            child: isFromUser
+                ? Text(
+                    message,
+                  )
+                : MarkdownBody(
+                    data: message,
+                    selectable: false,
+                    softLineBreak: true,
+                    // onSelectionChanged: (text, selection, cause) {},
+                    // onTapLink: (text, href, title) {
+                    //   print("Text is $text, link is $href, title is $title");
+                    // },
+                    // onTapText: () {
+                    //   print("Text is tapped");
+                    // },
+                  ),
           ),
         ),
       ],
