@@ -3,10 +3,45 @@ import 'package:toura/UI/entire_trip_screen/entire_trip_page.dart';
 import 'package:toura/UI/global.dart';
 import 'package:toura/UI/home_screen/carousel_slider_suggetions.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
   });
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List tiles = [];
+
+  @override
+  void initState() {
+    tiles = <ListTile>[
+      ListTile(
+        title: const Text("Trip 1"),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const EntireTripPage(
+                      "Trip 1", CurrentPage.tripPlanPage)));
+        },
+      ),
+      ListTile(
+        title: const Text("Trip 2"),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const EntireTripPage("Trip 2", CurrentPage.tripPlanPage)),
+          );
+        },
+      ),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,28 +95,59 @@ class HomePage extends StatelessWidget {
               height: 200,
               child: ListView(
                 children: [
+                  // ListTile(
+                  //   title: const Text("Trip 1"),
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => const EntireTripPage(
+                  //                 "Trip 1", CurrentPage.tripPlanPage)));
+                  //   },
+                  // ),
+                  // ListTile(
+                  //   title: const Text("Trip 2"),
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) => const EntireTripPage(
+                  //               "Trip 2", CurrentPage.tripPlanPage)),
+                  //     );
+                  //   },
+                  // ),
+                  ...tiles,
                   ListTile(
-                    title: const Text("Upcoming trip demo"),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EntireTripPage(
-                                  "Upcoming tirp demo",
-                                  CurrentPage.tripPlanPage)));
-                    },
+                    title: Center(
+                      child: IconButton(
+                        icon: const Icon(Icons.add),
+                        onPressed: () {
+                          setState(() {
+                            tiles.add(
+                              ListTile(
+                                title: const Text("New trip"),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const EntireTripPage("New trip",
+                                                CurrentPage.tripPlanPage)),
+                                  );
+                                },
+                              ),
+                            );
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const EntireTripPage(
+                                    "New Trip", CurrentPage.tripPlanPage)),
+                          );
+                        },
+                      ),
+                    ),
                   ),
-                  ListTile(
-                    title: const Text("Upcoming trip demo 2"),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EntireTripPage(
-                                  "Upcoming tirp demo 2",
-                                  CurrentPage.tripPlanPage)));
-                    },
-                  )
                 ],
               ),
             ),
@@ -96,25 +162,23 @@ class HomePage extends StatelessWidget {
               child: ListView(
                 children: [
                   ListTile(
-                    title: const Text("Past trip demo"),
+                    title: const Text("Past trip 1"),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const EntireTripPage(
-                                  "Past tirp demo",
-                                  CurrentPage.melojourneyPage)));
+                                  "Past trip 1", CurrentPage.melojourneyPage)));
                     },
                   ),
                   ListTile(
-                    title: const Text("Past trip demo 2"),
+                    title: const Text("Past trip 2"),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const EntireTripPage(
-                                  "Past tirp demo 2",
-                                  CurrentPage.melojourneyPage)));
+                                  "Past trip 2", CurrentPage.melojourneyPage)));
                     },
                   )
                 ],
