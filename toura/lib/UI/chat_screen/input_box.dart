@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:toura/Provider/messagenotifier.dart';
 
 class InputBox extends ConsumerStatefulWidget {
-  const InputBox({super.key});
+  final ScrollController scrollController;
+  const InputBox({super.key, required this.scrollController});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _InputBoxState();
@@ -36,6 +37,9 @@ class _InputBoxState extends ConsumerState<InputBox> {
                   String prompt = _controller.text;
                   _controller.clear();
                   ref.read(msgNotifierProvider.notifier).userPrompt(prompt);
+                  widget.scrollController.animateTo(0,
+                      duration: const Duration(microseconds: 500),
+                      curve: Curves.easeIn);
                 }
               },
             ),

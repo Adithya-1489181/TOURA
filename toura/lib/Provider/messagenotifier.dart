@@ -52,6 +52,5 @@ class MsgNotifier extends Notifier<List<Message>> {
   }
 }
 
-final msgNotifierProvider = NotifierProvider<MsgNotifier, List<Message>>(() {
-  return MsgNotifier();
-});
+final msgNotifierProvider =
+    NotifierProvider<MsgNotifier, List<Message>>(MsgNotifier.new);
