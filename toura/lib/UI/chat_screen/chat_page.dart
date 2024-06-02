@@ -32,10 +32,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
   @override
   Widget build(BuildContext context) {
     var msgs = ref.watch(msgNotifierProvider).reversed.toList();
-    if (msgs.isNotEmpty) {
-      _scrollController.animateTo(0,
-          duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
-    }
+
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -59,7 +56,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
               child: Align(
                   alignment: Alignment.centerLeft, child: Text("Typing...")),
             ),
-          const InputBox(),
+          InputBox(scrollController: _scrollController),
         ],
       ),
     );

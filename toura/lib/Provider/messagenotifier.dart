@@ -46,7 +46,10 @@ class MsgNotifier extends Notifier<List<Message>> {
         isAITyping = false;
         state = [...state];
       },
-      onError: (Object error) {},
+      onError: (Object error) {
+        isAITyping = false;
+        state = [...state];
+      },
       cancelOnError: true,
     );
   }

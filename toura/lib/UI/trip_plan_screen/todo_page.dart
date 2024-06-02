@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toura/UI/todo_screen/trip_plan.dart';
+import 'package:toura/UI/trip_plan_screen/trip_plan_page.dart';
 
 class TodoPage extends StatelessWidget {
   const TodoPage({super.key});
@@ -20,7 +20,7 @@ class TodoPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        TripPlan("Toura tour name ${index + 1}"),
+                        const TripPlanPage(/*"Toura tour name ${index + 1}"*/),
                   ),
                 );
               },

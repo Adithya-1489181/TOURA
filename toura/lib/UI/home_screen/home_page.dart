@@ -1,154 +1,187 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:toura/UI/entire_trip_screen/entire_trip_page.dart';
+import 'package:toura/UI/global.dart';
+import 'package:toura/UI/home_screen/carousel_slider_suggetions.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
   });
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List tiles = [];
+
+  @override
+  void initState() {
+    tiles = <ListTile>[
+      ListTile(
+        title: const Text("Trip 1"),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const EntireTripPage(
+                      "Trip 1", CurrentPage.tripPlanPage)));
+        },
+      ),
+      ListTile(
+        title: const Text("Trip 2"),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const EntireTripPage("Trip 2", CurrentPage.tripPlanPage)),
+          );
+        },
+      ),
+    ];
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  icon: const Icon(
-                    Icons.circle,
-                    size: 60,
-                  ),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.circle,
-                    size: 60,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     IconButton(
+            //       padding: const EdgeInsets.symmetric(
+            //         horizontal: 20,
+            //         vertical: 10,
+            //       ),
+            //       icon: const Icon(
+            //         Icons.circle,
+            //         size: 60,
+            //       ),
+            //       onPressed: () {},
+            //     ),
+            //     IconButton(
+            //       padding: const EdgeInsets.symmetric(
+            //         horizontal: 20,
+            //         vertical: 10,
+            //       ),
+            //       onPressed: () {},
+            //       icon: const Icon(
+            //         Icons.circle,
+            //         size: 60,
+            //       ),
+            //     ),
+            //   ],
+            // ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: CarouselSlider(
-                items: [1, 2]
-                    .map(
-                      (e) => Container(
-                        color: Colors.amber,
-                        child: Center(
-                          child: Text("Container$e"),
-                        ),
-                      ),
-                    )
-                    .toList(),
-                options: CarouselOptions(
-                  aspectRatio: 16 / 9,
-                  autoPlay: true,
-                ),
+              child: const CarouselSliderSuggetions(),
+            ),
+
+            const Text(
+              "Upcoming Tours",
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
-              height: 70,
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
+            SizedBox(
+              height: 200,
+              child: ListView(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.pink,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Center(
-                            child: Text("Suggestions"),
-                          ),
-                        ),
+                  // ListTile(
+                  //   title: const Text("Trip 1"),
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => const EntireTripPage(
+                  //                 "Trip 1", CurrentPage.tripPlanPage)));
+                  //   },
+                  // ),
+                  // ListTile(
+                  //   title: const Text("Trip 2"),
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) => const EntireTripPage(
+                  //               "Trip 2", CurrentPage.tripPlanPage)),
+                  //     );
+                  //   },
+                  // ),
+                  ...tiles,
+                  ListTile(
+                    title: Center(
+                      child: IconButton(
+                        icon: const Icon(Icons.add),
+                        onPressed: () {
+                          setState(() {
+                            tiles.add(
+                              ListTile(
+                                title: const Text("New trip"),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const EntireTripPage("New trip",
+                                                CurrentPage.tripPlanPage)),
+                                  );
+                                },
+                              ),
+                            );
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const EntireTripPage(
+                                    "New Trip", CurrentPage.tripPlanPage)),
+                          );
+                        },
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.pink,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Center(
-                            child: Text("Suggestions"),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.pink,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Center(
-                            child: Text("Suggestions"),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.pink,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Center(
-                            child: Text("Suggestions"),
-                          ),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 60,
+            const Text(
+              "Past Tours",
+              style: TextStyle(
+                fontSize: 40,
+              ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: const Center(
-                child: Text("Don't know what to do"),
+            SizedBox(
+              height: 200,
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: const Text("Past trip 1"),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EntireTripPage(
+                                  "Past trip 1", CurrentPage.melojourneyPage)));
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Past trip 2"),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EntireTripPage(
+                                  "Past trip 2", CurrentPage.melojourneyPage)));
+                    },
+                  )
+                ],
               ),
             ),
           ],
